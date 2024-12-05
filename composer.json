@@ -1,15 +1,12 @@
 {
-    "name": "algoyounes/laravel-package-skeleton",
-    "description": "Laravel Package Skeleton for streamlined package development",
+    "name": "algoyounes/bindify",
+    "description": "Laravel Package Bindify is a package that helps you to bind your classes to the Laravel service container",
     "keywords": [
         "laravel",
         "package",
-        "skeleton",
-        "skeleton-package",
-        "laravel package",
-        "laravel package skeleton",
-        "package skeleton",
-        "package development"
+        "service container",
+        "bindify",
+        "attribute binding"
     ],
     "type": "library",
     "license": "MIT",
@@ -21,15 +18,13 @@
     ],
     "autoload": {
         "psr-4": {
-            "AlgoYounes\\Skeleton\\": "src/"
-        },
-        "files": [
-            "./helpers.php"
-        ]
+            "AlgoYounes\\Bindify\\": "src/"
+        }
     },
     "autoload-dev": {
         "psr-4": {
-            "AlgoYounes\\Skeleton\\Tests\\": "tests"
+            "AlgoYounes\\Bindify\\Tests\\": "tests",
+            "Workbench\\App\\": "workbench/app/"
         }
     },
     "require": {
@@ -44,7 +39,8 @@
         "laravel/pint": "^1.13.7",
         "pestphp/pest": "^2.28.1",
         "phpstan/phpstan": "1.10.56",
-        "rector/rector": "0.19.5"
+        "rector/rector": "0.19.5",
+        "orchestra/testbench": "^9.0"
     },
     "scripts": {
         "refactor": "rector",
