@@ -1,59 +1,72 @@
 <p align="center">
-<img width="150" height="150" src="assets/logo.png" alt="Laravel Package Skeleton Logo"/>
-<br><b>Laravel Package Skeleton</b>
+<img width="150" height="150" src="assets/logo.png" alt="Bindify Logo"/>
+<br><b>Bindify</b>
 </p>
 <p align="center">
-<a href="https://github.com/algoyounes/laravel-package-skeleton/actions"><img src="https://github.com/algoyounes/laravel-package-skeleton/actions/workflows/unit-tests.yml/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/algoyounes/laravel-package-skeleton"><img src="https://img.shields.io/packagist/dt/algoyounes/laravel-package-skeleton" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/algoyounes/laravel-package-skeleton"><img src="https://img.shields.io/packagist/v/algoyounes/laravel-package-skeleton" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/algoyounes/laravel-package-skeleton"><img src="https://img.shields.io/packagist/l/algoyounes/laravel-package-skeleton" alt="License"></a>
+<a href="https://github.com/algoyounes/bindify/actions"><img src="https://github.com/algoyounes/bindify/actions/workflows/unit-tests.yml/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/algoyounes/bindify"><img src="https://img.shields.io/packagist/dt/algoyounes/bindify" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/algoyounes/bindify"><img src="https://img.shields.io/packagist/v/algoyounes/bindify" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/algoyounes/bindify"><img src="https://img.shields.io/packagist/l/algoyounes/bindify" alt="License"></a>
 </p>
 
-Creating Laravel packages made it easy! You can start building your own modular, organized package effortlessly.
-
-> [!NOTE]
-> This package requires PHP 8.2+ and Laravel 11+ 
+Bindify is a Laravel package that provides a simple way to bind interfaces to their implementations using attributes.
 
 ## Installation
 
-You can install the package globally via composer:
+You can install the package via composer:
 
 ```
-composer global require algoyounes/laravel-package-skeleton
+composer require algoyounes/bindify
+```
+
+After installation, inject the service provider :
+    
+```php
+'providers' => [
+    // Other Service Providers
+    AlgoYounes\Bindify\BindifyServiceProvider::class,
+],
 ```
 
 ## Usage
 
-Once installed, you can use the following commands to streamline your package development process:
+### 1. Define your interface and implementation : 
 
-**⚡️ Create your package using composer :**
-```
-composer create-project algoyounes/laravel-package-skeleton --prefer-source YourPackageName
+Apply the `#[BindWith]` attribute to bind an interface to its implementation.
+
+```php
+
+namespace App\Contracts;
+
+use AlgoYounes\Bindify\Attributes\BindWith;
+use AlgoYounes\Bindify\Attributes\BindType;
+
+#[BindWith(DefaultService::class, BindType::Singleton)]
+interface ServiceContract
+{
+    public function execute();
+}
 ```
 
-**🚀 Run the entire test suite :**
-```
-composer test
+### 2. Create your implementation :
+
+```php
+
+namespace App\Services;
+
+use App\Contracts\ServiceContract;
+
+class DefaultService implements ServiceContract
+{
+    public function execute()
+    {
+        // Your implementation here
+    }
+}
 ```
 
-Running `composer test` will execute the following tasks :
-- 🔄 Refactoring Tests: `composer rector`
-- 🧹 Linting Tests: `composer test:lint`
-- 🔍 Static Analysis Tests: `composer test:types`
-- 🛠️ Unit Tests: `composer test:unit`
+### Supported Binding Types : 
 
-**🔧 Install Git Hooks:**
-```
-composer hook:install
-```
-Running `composer hook` will execute the following tasks :
-- 🔄 Pre-commit Hook: `composer hook:pre-commit`
-- 🧹 Pre-push Hook: `composer hook:pre-push`
+- `BindType::Singleton` : Binds the implementation as a singleton.
+- `BindType::Transient` : Binds the implementation as a transient.
 
-**🛠️ Fix code issues:**
-```
-composer fix
-```
-Running `composer fix` will execute the following tasks:
-- ✨ Laravel linting Fixes: `composer fix:lint`
-- 🔄 Refactoring Fixes: `composer fix:refactor`
