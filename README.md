@@ -9,7 +9,7 @@
 <a href="https://packagist.org/packages/algoyounes/bindify"><img src="https://img.shields.io/packagist/l/algoyounes/bindify" alt="License"></a>
 </p>
 
-Bindify is a Laravel package that provides a simple way to bind interfaces to their implementations using attributes.
+**Bindify** is a Laravel package that provides a simple way to bind interfaces to their implementations using attributes.
 
 ## Installation
 
@@ -19,7 +19,7 @@ You can install the package via composer:
 composer require algoyounes/bindify
 ```
 
-After installation, inject the service provider :
+After installation, register the service provider in your `config/app.php` file:
     
 ```php
 'providers' => [
@@ -30,9 +30,13 @@ After installation, inject the service provider :
 
 ## Usage
 
-### 1. Define your interface and implementation : 
+### Supported Bind Types
+- `BindType::Singleton`: Keeps one instance and shares it everywhere.
+- `BindType::Transient`: Creates a new instance every time you use it.
 
-Apply the `#[BindWith]` attribute to bind an interface to its implementation.
+### Define your interface and implementation
+
+1. Use the `#[BindWith]` attribute to bind an interface to its implementation
 
 ```php
 
@@ -48,7 +52,7 @@ interface ServiceContract
 }
 ```
 
-### 2. Create your implementation :
+2. Create the implementation of the interface
 
 ```php
 
@@ -64,9 +68,3 @@ class DefaultService implements ServiceContract
     }
 }
 ```
-
-### Supported Binding Types : 
-
-- `BindType::Singleton` : Binds the implementation as a singleton.
-- `BindType::Transient` : Binds the implementation as a transient.
-
