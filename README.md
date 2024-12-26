@@ -19,15 +19,6 @@ You can install the package via composer:
 composer require algoyounes/bindify
 ```
 
-After installation, register the service provider in your `config/app.php` file:
-    
-```php
-'providers' => [
-    // Other Service Providers
-    AlgoYounes\Bindify\BindifyServiceProvider::class,
-],
-```
-
 ## Usage
 
 ### Supported Bind Types
