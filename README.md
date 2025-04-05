@@ -59,3 +59,7 @@ class DefaultService implements ServiceContract
     }
 }
 ```
+
+## License
+
+The QrForge package is open-sourced software licensed under the [MIT license](LICENSE).
