@@ -11,6 +11,9 @@
 
 **Bindify** is a Laravel package that provides a simple way to bind interfaces to their implementations using attributes.
 
+> [!NOTE]
+> This package requires PHP 8.2+
+
 ## Installation
 
 You can install the package via composer:
