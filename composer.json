@@ -90,7 +90,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "AlgoYounes\\Bindify\\BindifyServiceProvider"
+                "AlgoYounes\\Bindify\\Providers\\BindifyServiceProvider"
             ]
         }
     },
