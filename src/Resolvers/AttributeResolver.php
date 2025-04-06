@@ -28,6 +28,16 @@ class AttributeResolver implements BindifyResolver
             return null;
         }
 
-        return BindContext::create($abstract, $bindWith->getConcrete(), $bindWith->getType());
+        $concretes = array_filter(
+            array_unique($bindWith->getConcrete()),
+            static fn (string $concrete): bool => class_exists($concrete)
+                && is_subclass_of($concrete, $abstract)
+        );
+
+        if ($concretes === []) {
+            return null;
+        }
+
+        return BindContext::create($abstract, $concretes, $bindWith->getType());
     }
 }
