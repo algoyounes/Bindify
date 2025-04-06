@@ -3,7 +3,7 @@
 namespace Workbench\App\Contracts;
 
 use AlgoYounes\Bindify\Attributes\BindWith;
-use Workbench\App\DefaultImplementationContract;
+use Workbench\App\DefaultImplementationService;
 
-#[BindWith(DefaultImplementationContract::class)]
+#[BindWith(DefaultImplementationService::class)]
 interface DefaultBindTypeContract {}

@@ -32,8 +32,13 @@ composer require algoyounes/bindify
 
 1. Use the `#[BindWith]` attribute to bind an interface to its implementation
 
-```php
+> [!TIP]
+> Bind multiple services :
+> ```php
+> #[BindWith([DefaultService::class, ... ], BindType::Singleton)]
+> ```
 
+```php
 namespace App\Contracts;
 
 use AlgoYounes\Bindify\Attributes\BindWith;
@@ -49,7 +54,6 @@ interface ServiceContract
 2. Create the implementation of the interface
 
 ```php
-
 namespace App\Services;
 
 use App\Contracts\ServiceContract;

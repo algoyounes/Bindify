@@ -7,13 +7,21 @@ use Attribute;
 #[Attribute(Attribute::TARGET_CLASS)]
 readonly class BindWith
 {
+    /** @param class-string|array<class-string> $concrete */
     public function __construct(
-        public string $concrete,
+        public string|array $concrete,
         public BindType $type = BindType::Transient,
     ) {}
 
-    public function getConcrete(): string
+    /**
+     * @return array<class-string>
+     */
+    public function getConcrete(): array
     {
+        if (is_string($this->concrete)) {
+            return [$this->concrete];
+        }
+
         return $this->concrete;
     }
 
