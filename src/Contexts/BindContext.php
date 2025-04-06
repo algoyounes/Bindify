@@ -6,22 +6,14 @@ use AlgoYounes\Bindify\Attributes\BindType;
 
 readonly class BindContext
 {
-    /** @param array<class-string> $concrete */
     public function __construct(
         private string $abstract,
-        private array $concrete,
+        private string $concrete,
         private BindType $type,
     ) {}
 
-    /**
-     * @param  class-string|array<class-string>  $concrete
-     */
-    public static function create(string $abstract, string|array $concrete, BindType $type): self
+    public static function create(string $abstract, string $concrete, BindType $type): self
     {
-        if (is_string($concrete)) {
-            $concrete = [$concrete];
-        }
-
         return new self($abstract, $concrete, $type);
     }
 
@@ -30,10 +22,7 @@ readonly class BindContext
         return $this->abstract;
     }
 
-    /**
-     * @return array<class-string>
-     */
-    public function getConcrete(): array
+    public function getConcrete(): string
     {
         return $this->concrete;
     }

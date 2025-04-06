@@ -3,8 +3,8 @@
 namespace Workbench\App\Contracts;
 
 use AlgoYounes\Bindify\Attributes\BindWith;
-use Workbench\App\DefaultImplementationService;
+use Workbench\App\DefaultImplementationContract;
 
-#[BindWith(DefaultImplementationService::class)]
-#[BindWith(DefaultImplementationService::class)]
+#[BindWith(DefaultImplementationContract::class)]
+#[BindWith(DefaultImplementationContract::class)]
 interface MultipleAttributesContract {}
