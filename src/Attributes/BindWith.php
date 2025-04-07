@@ -11,6 +11,7 @@ readonly class BindWith
     public function __construct(
         public string|array $concrete,
         public BindType $type = BindType::Transient,
+        public ?string $tag = null,
     ) {}
 
     /**
@@ -28,5 +29,10 @@ readonly class BindWith
     public function getType(): BindType
     {
         return $this->type;
+    }
+
+    public function getTag(): ?string
+    {
+        return $this->tag;
     }
 }
