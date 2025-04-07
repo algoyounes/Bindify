@@ -32,8 +32,8 @@ composer require algoyounes/bindify
 
 1. Use the `#[BindWith]` attribute to bind an interface to its implementation
 
-> [!TIP]
-> Bind multiple services :
+> [!NOTE]
+> You can bind multiple services by passing them as an array :
 > ```php
 > #[BindWith([DefaultService::class, ... ], BindType::Singleton)]
 > ```

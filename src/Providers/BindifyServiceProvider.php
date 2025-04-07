@@ -35,11 +35,22 @@ class BindifyServiceProvider extends ServiceProvider
                 return;
             }
 
+            if ($binding->getConcrete() === []) {
+                return;
+            }
+
             foreach ($binding->getConcrete() as $concrete) {
-                $container->bind(
+                $container->bindIf(
                     $binding->getAbstract(),
                     $concrete,
                     $binding->isSingleton(),
+                );
+            }
+
+            if (count($binding->getConcrete()) > 1) {
+                $container->tag(
+                    $binding->getConcrete(),
+                    $binding->getAbstract().'_tag',
                 );
             }
         };
