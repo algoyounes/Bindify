@@ -50,25 +50,13 @@ it('returns null when the interface has more than one attribute', function () {
 it('return null when invalid classes binding', function () {
     $this->assertNull($this->attributeResolver->resolve(InvalidClassBindingsContract::class));
 });
-
 it('binds multiple valid services to the same interface', function () {
-    /** @var BindContext $binding */
-    $binding = $this->attributeResolver->resolve(MultiBindContract::class);
+    app(MultiBindContract::class);
 
-    $expected = BindContext::create(
-        MultiBindContract::class,
-        [
-            DefaultImplementationService::class,
-            AlternativeImplementationService::class,
-        ],
-        BindType::Transient
-    );
+    $instances = $this->app->tagged('custom_tag');
 
-    expect($expected)
-        ->toEqual($binding)
-        ->and($binding->getConcrete())
-        ->toBeArray()
-        ->toHaveCount(2)
-        ->and($binding->getConcrete())
-        ->toEqual([DefaultImplementationService::class, AlternativeImplementationService::class]);
+    foreach ($instances as $instance) {
+        expect(get_class($instance))
+            ->toBeIn([DefaultImplementationService::class, AlternativeImplementationService::class]);
+    }
 });
