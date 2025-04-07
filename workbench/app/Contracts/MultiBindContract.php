@@ -10,5 +10,5 @@ use Workbench\App\DefaultImplementationService;
 #[BindWith([
     DefaultImplementationService::class,
     AlternativeImplementationService::class,
-], BindType::Transient)]
+], BindType::Transient, tag: 'custom_tag')]
 interface MultiBindContract {}

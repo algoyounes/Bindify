@@ -11,6 +11,7 @@ readonly class BindContext
         private string $abstract,
         private array $concrete,
         private BindType $type,
+        private ?string $tag = null,
     ) {}
 
     /**
@@ -46,5 +47,19 @@ readonly class BindContext
     public function isSingleton(): bool
     {
         return $this->type === BindType::Singleton;
+    }
+
+    public function getTag(): string
+    {
+        if ($this->tag === null) {
+            return $this->abstract.'_tag';
+        }
+
+        return $this->tag;
+    }
+
+    public function hasTag(): bool
+    {
+        return $this->tag !== null;
     }
 }

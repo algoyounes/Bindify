@@ -47,10 +47,10 @@ class BindifyServiceProvider extends ServiceProvider
                 );
             }
 
-            if (count($binding->getConcrete()) > 1) {
+            if ($binding->hasTag() || count($binding->getConcrete()) > 1) {
                 $container->tag(
                     $binding->getConcrete(),
-                    $binding->getAbstract().'_tag',
+                    $binding->getTag(),
                 );
             }
         };

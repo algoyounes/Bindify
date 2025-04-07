@@ -38,6 +38,6 @@ class AttributeResolver implements BindifyResolver
             return null;
         }
 
-        return new BindContext($abstract, $concretes, $bindWith->getType());
+        return new BindContext($abstract, $concretes, $bindWith->getType(), $bindWith->getTag());
     }
 }
