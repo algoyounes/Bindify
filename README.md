@@ -29,6 +29,8 @@ composer require algoyounes/bindify
 Define your interface with the `#[BindWith]` attribute:
 
 ```php
+namespace App\Contracts;
+
 use AlgoYounes\Bindify\Attributes\BindWith;
 use AlgoYounes\Bindify\Attributes\BindType;
 
@@ -42,6 +44,8 @@ interface ServiceContract
 Create your implementation:
 
 ```php
+namespace App\Services;
+
 use App\Contracts\ServiceContract;
 
 class DefaultService implements ServiceContract
@@ -67,6 +71,11 @@ class DefaultService implements ServiceContract
 Bind multiple implementations to an interface:
 
 ```php
+namespace App\Contracts;
+
+use AlgoYounes\Bindify\Attributes\BindWith;
+use AlgoYounes\Bindify\Attributes\BindType;
+
 #[BindWith([DefaultService::class, AlternativeService::class], BindType::Singleton)]
 interface ServiceContract
 {
@@ -82,7 +91,7 @@ Explicitly tag your bindings:
 #[BindWith([DefaultService::class], BindType::Singleton, tag: 'primary')]
 ```
 
-When no tag is provided and the size of services greater than one, Bindify will auto-generate one based on the implementation class name appended with '_tag'
+When no tag is provided and the size of services greater than one, Bindify will auto-generate one based on the implementation class name appended with `_tag`
 
 ### Retrieving Bindings
 
