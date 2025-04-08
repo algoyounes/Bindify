@@ -2,6 +2,14 @@
 
 All notable changes to `Bindify` will be documented in this file
 
+## v1.2.0 - 2025-04-08
+
+### What's Changed
+
+* Feat: BindWith > Add Tagging Support by @algoyounes in https://github.com/algoyounes/Bindify/pull/3
+
+**Full Changelog**: https://github.com/algoyounes/Bindify/compare/v1.1.0...v1.2.0
+
 ## v1.1.0 - 2025-04-07
 
 ### What's Changed
