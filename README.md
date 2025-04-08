@@ -24,23 +24,11 @@ composer require algoyounes/bindify
 
 ## Usage
 
-### Supported Bind Types
-- `BindType::Singleton`: Keeps one instance and shares it everywhere.
-- `BindType::Transient`: Creates a new instance every time you use it.
+### Basic Binding
 
-### Define your interface and implementation
-
-1. Use the `#[BindWith]` attribute to bind an interface to its implementation
-
-> [!NOTE]
-> You can bind multiple services by passing them as an array :
-> ```php
-> #[BindWith([DefaultService::class, ... ], BindType::Singleton)]
-> ```
+Define your interface with the `#[BindWith]` attribute:
 
 ```php
-namespace App\Contracts;
-
 use AlgoYounes\Bindify\Attributes\BindWith;
 use AlgoYounes\Bindify\Attributes\BindType;
 
@@ -51,20 +39,61 @@ interface ServiceContract
 }
 ```
 
-2. Create the implementation of the interface
+Create your implementation:
 
 ```php
-namespace App\Services;
-
 use App\Contracts\ServiceContract;
 
 class DefaultService implements ServiceContract
 {
     public function execute()
     {
-        // Your implementation here
+        // Your implementation
     }
 }
+```
+
+### Binding Types
+
+| Type                  | Description                         |
+|-----------------------|-------------------------------------|
+| `BindType::Singleton` | Shares the same instance everywhere |
+| `BindType::Transient` | Creates a new instance each time    |
+
+### Advanced Binding
+
+#### Multiple Implementations
+
+Bind multiple implementations to an interface:
+
+```php
+#[BindWith([DefaultService::class, AlternativeService::class], BindType::Singleton)]
+interface ServiceContract
+{
+    // ...
+}
+```
+
+#### Tagged Bindings
+
+Explicitly tag your bindings:
+
+```php
+#[BindWith([DefaultService::class], BindType::Singleton, tag: 'primary')]
+```
+
+When no tag is provided and the size of services greater than one, Bindify will auto-generate one based on the implementation class name appended with '_tag'
+
+### Retrieving Bindings
+
+Resolve your bindings as usual through container:
+
+```php
+// Single binding
+$service = app(ServiceContract::class);
+
+// Tagged bindings
+$services = app()->tagged('primary');
 ```
 
 ## License
