@@ -91,7 +91,9 @@ Explicitly tag your bindings:
 #[BindWith([DefaultService::class], BindType::Singleton, tag: 'primary')]
 ```
 
-When no tag is provided and the size of services greater than one, Bindify will auto-generate one based on the implementation class name appended with `_tag`
+> [!NOTE]
+> **When no tag is provided and the size of services greater than one**, Bindify will auto-generate one based on the implementation class name appended with `_tag`
+>
 
 ### Retrieving Bindings
 
