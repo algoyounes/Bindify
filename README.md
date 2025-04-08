@@ -98,10 +98,8 @@ When no tag is provided and the size of services greater than one, Bindify will 
 Resolve your bindings as usual through container:
 
 ```php
-// Single binding
 $service = app(ServiceContract::class);
 
-// Tagged bindings
 $services = app()->tagged('primary');
 ```
 
