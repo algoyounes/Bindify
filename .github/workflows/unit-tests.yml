@@ -8,13 +8,13 @@ on:
 
 jobs:
   unit-tests:
-    name: Run Unit Tests
+    name: PHP ${{ matrix.php }}
     runs-on: ubuntu-latest
 
     strategy:
       fail-fast: true
       matrix:
-        php: [8.2]
+        php: [8.2, 8.3]
         dependency-version: [prefer-stable]
 
     steps:

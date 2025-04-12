@@ -65,6 +65,7 @@
             "@hook:pre-push"
         ],
         "hook:install": [
+            "if [ -d .git ]; then",
             "ln -sf $PWD/hooks/pre-commit .git/hooks/pre-commit",
             "chmod +x .git/hooks/pre-commit",
             "ln -sf $PWD/hooks/pre-push .git/hooks/pre-push",
