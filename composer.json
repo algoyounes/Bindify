@@ -6,7 +6,8 @@
         "package",
         "service container",
         "bindify",
-        "attribute binding"
+        "attribute binding",
+        "dependency injection"
     ],
     "type": "library",
     "license": "MIT",
