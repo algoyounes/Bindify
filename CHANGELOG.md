@@ -2,6 +2,15 @@
 
 All notable changes to `Bindify` will be documented in this file
 
+## v1.2.2 - 2025-04-12
+
+### Changes
+
+* Add PHP 8.3 support https://github.com/algoyounes/Bindify/commit/8383d5b32036a2f851111de61c0c3b017032bae0
+* Add PHP 8.4 support https://github.com/algoyounes/Bindify/commit/2adf93a1a455a92436f6b31c1c08a55ce0c26103
+
+**Full Changelog**: https://github.com/algoyounes/Bindify/compare/v1.2.0...v1.2.2
+
 ## v1.2.0 - 2025-04-08
 
 ### What's Changed
