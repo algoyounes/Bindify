@@ -105,6 +105,10 @@ $service = app(ServiceContract::class);
 $services = app()->tagged('primary');
 ```
 
+## Contributing
+
+Thank you for considering contributing to this package! Please check the [CONTRIBUTING](CONTRIBUTING.md) file for more details.
+
 ## License
 
 This package is open-sourced software licensed under the [MIT license](LICENSE).
