@@ -92,7 +92,7 @@ Explicitly tag your bindings:
 ```
 
 > [!NOTE]
-> **When no tag is provided and the size of services greater than one**, Bindify will auto-generate one based on the implementation class name appended with `_tag`
+> **When no tag is provided and there are multiple services**, will auto-generates a tag by appending `<class_name>_tag`
 >
 
 ### Retrieving Bindings
