@@ -9,10 +9,17 @@
 <a href="https://packagist.org/packages/algoyounes/bindify"><img src="https://img.shields.io/packagist/l/algoyounes/bindify" alt="License"></a>
 </p>
 
-**Bindify** is a Laravel package that provides a simple way to bind interfaces to their implementations using attributes.
+**Bindify** is a Laravel package that provides attributes to bind interfaces to their implementations **lazily**.
 
 > [!NOTE]
 > This package requires PHP 8.2+
+
+## Features ✨
+- **Declarative bindings** using `#[BindWith]` attributes
+- **Lazy registration** _(bindings are registered when first resolved)_
+- **Seamless integration** with Laravel's service container
+- **Multiple binding types** _(Singleton, Transient)_
+- **Tagged bindings**
 
 ## Installation
 
@@ -33,6 +40,7 @@ namespace App\Contracts;
 
 use AlgoYounes\Bindify\Attributes\BindWith;
 use AlgoYounes\Bindify\Attributes\BindType;
+use App\Services\DefaultService;
 
 #[BindWith(DefaultService::class, BindType::Singleton)]
 interface ServiceContract
