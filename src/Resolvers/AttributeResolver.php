@@ -31,7 +31,6 @@ class AttributeResolver implements BindifyResolver
         $concretes = array_filter(
             array_unique($bindWith->getConcrete()),
             static fn (string $concrete): bool => class_exists($concrete)
-                // @phpstan-ignore-next-line
                 && is_subclass_of($concrete, $abstract)
         );
 
