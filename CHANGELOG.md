@@ -2,6 +2,15 @@
 
 All notable changes to `Bindify` will be documented in this file
 
+## v1.2.3 - 2025-06-28
+
+### What's Changed
+
+* Removed `// @phpstan-ignore-next-line` as they caused issues on PHP 8.3
+* Confirmed that these changes were included in the same pull request created by @dependabot in https://github.com/algoyounes/Bindify/pull/4
+
+**Full Changelog**: https://github.com/algoyounes/Bindify/compare/v1.2.2...v1.2.3
+
 ## v1.2.2 - 2025-04-12
 
 ### Changes
